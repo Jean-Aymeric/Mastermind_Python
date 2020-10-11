@@ -15,7 +15,8 @@ def askProposition() :
     print("Entrez votre proposition de code : ")
     print("Appuyez sur ENTREE après chaque nombre.")
     for i in range( CODE_SIZE ) :
-        proposition[i] = input ("Nombre " + str(i + 1) + " : ")
+        proposition[i] = int(input ("Nombre " + str(i + 1) + " : "))
+    return proposition
 
 def gameLoop() :
     chooseSecretCode()
