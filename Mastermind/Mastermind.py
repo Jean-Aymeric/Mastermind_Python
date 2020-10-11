@@ -13,10 +13,18 @@ def analyseProposition( proposition ) :
     for i in range( CODE_SIZE ) :
         if (proposition[i] == secretCode[i]) :
             analyseResult[0] += 1
+    for i in range( CODE_SIZE ) :
+        alreadyFound = False
+        for j in range( CODE_SIZE ) :
+             if ((proposition[i] == secretCode[j]) and not alreadyFound) :
+                 analyseResult[1] += 1
+                 alreadyFound = True
+    analyseResult[1] -= analyseResult[0]
     return analyseResult
 
-def showAnalyseResult(analyseResult) :
-    print("Nombres bien placés : " + str(analyseResult[0]))
+def showAnalyseResult( analyseResult ) :
+    print( "Nombres bien placés : " + str( analyseResult[0] ) )
+    print( "Nombres mal placés  : " + str( analyseResult[1] ) )
 
 def askProposition() :
     proposition = [ -1 ] * CODE_SIZE
