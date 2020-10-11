@@ -11,11 +11,14 @@ def analyseProposition( proposition ) :
     return True
 
 def askProposition() :
-    proposition = [0] * CODE_SIZE
+    proposition = [-1] * CODE_SIZE
     print("Entrez votre proposition de code : ")
     print("Appuyez sur ENTREE après chaque nombre.")
+    print ("Chaque nombre doit être inférieur à " + str(NB_COLORS))
     for i in range( CODE_SIZE ) :
-        proposition[i] = int(input ("Nombre " + str(i + 1) + " : "))
+       while ((proposition[i] >= NB_COLORS) or (proposition[i] < 0)) :
+           proposition[i] = int(input ("Nombre " + str(i + 1) + " : "))
+ 
     return proposition
 
 def gameLoop() :
