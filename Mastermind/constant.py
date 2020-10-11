@@ -1,0 +1,2 @@
+NB_COLORS = 10
+CODE_SIZE = 4
