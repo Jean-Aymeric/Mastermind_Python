@@ -10,16 +10,19 @@ def chooseSecretCode() :
 
 def analyseProposition( proposition ) :
     analyseResult = [ 0, 0 ]
+    secretCodeAnalyse = [ False ] * CODE_SIZE
+    propositionAnalyse = [ False ] * CODE_SIZE
     for i in range( CODE_SIZE ) :
         if (proposition[i] == secretCode[i]) :
             analyseResult[0] += 1
+            secretCodeAnalyse[i] = True
+            propositionAnalyse[i] = True
     for i in range( CODE_SIZE ) :
-        alreadyFound = False
         for j in range( CODE_SIZE ) :
-             if ((proposition[i] == secretCode[j]) and not alreadyFound) :
+             if ((proposition[i] == secretCode[j]) and not secretCodeAnalyse[j] and not propositionAnalyse[i]) :
                  analyseResult[1] += 1
-                 alreadyFound = True
-    analyseResult[1] -= analyseResult[0]
+                 secretCodeAnalyse[j] = True
+                 propositionAnalyse[i] = True
     return analyseResult
 
 def showAnalyseResult( analyseResult ) :
